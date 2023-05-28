@@ -1,0 +1,5 @@
+.featured {
+    background-image: linear-gradient(to bottom, #88967157, #3d496648), url("../../../assets/home/featured.jpg");
+    background-size: cover;
+    background-position: center;
+}
