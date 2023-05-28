@@ -8,49 +8,63 @@ import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import Swal from "sweetalert2";
 const SingUp = () => {
-    const { register, handleSubmit,reset, formState: { errors } } = useForm();
-    const {userSignUp,updateUserInFo} = useContext(AuthContext);
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    const { userSignUp, updateUserInFo } = useContext(AuthContext);
     const navigate = useNavigate();
     const onSubmit = data => {
         console.log(data)
-        userSignUp(data.email,data.password).then((loggedInUser) => {
+        userSignUp(data.email, data.password).then((loggedInUser) => {
             // Signed in 
             const user = loggedInUser.user;
             console.log(user);
-            updateUserInFo(data.name,data.photoUrl).then(() => {
-                reset();
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Account created successfully',
-                    showConfirmButton: false,
-                    timer: 1500
-                  })
-                  navigate("/" ,{replace:true})
-              }).catch((error) => {
+            updateUserInFo(data.name, data.photoUrl).then(() => {
+                const saveUser ={name:data.name, email:data.email}
+                fetch("http://localhost:5000/users",{
+                    method:"POST",
+                    headers:{
+                        'content-type':'application/json'
+                    },
+                    body:JSON.stringify(saveUser)
+                }).then(res => res.json()).then(data => {
+                    console.log(data);
+                    if (data.insertedId) {
+                        reset();
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Account created successfully',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                        navigate("/", { replace: true })
+                    }
+                })
+
+
+            }).catch((error) => {
                 Swal.fire({
                     icon: `${error}`,
                     title: 'Oops...',
                     text: 'Did not update user profile!',
                     footer: '<a href="">Why do I have this issue?</a>'
-                  })
-              });
-            
+                })
+            });
+
             // ...
-          })
-          .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            console.log("Error Message: ",errorMessage ,"Error Code: ", errorCode);
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'Something went wrong!',
-                footer: '<a href="">Why do I have this issue?</a>'
-              })
-          });
+        })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log("Error Message: ", errorMessage, "Error Code: ", errorCode);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong!',
+                    footer: '<a href="">Why do I have this issue?</a>'
+                })
+            });
 
     };
-   
+
 
     return (
         <div className="h-[100vh] flex items-center justify-center" style={{ backgroundImage: `url("${signUpBG}")` }}>
