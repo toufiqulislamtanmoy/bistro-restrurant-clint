@@ -10,6 +10,7 @@ import SingUp from "../Pages/SingUp/SingUp";
 import Dashboard from "../Layout/Dashboard";
 import MyCart from "../Pages/Dashboard/MyCart/MyCart";
 import PrivetRoute from "./PrivetRoute";
+import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
 
 const router = createBrowserRouter([
     {
@@ -45,7 +46,11 @@ const router = createBrowserRouter([
         {
           path:"mycart",
           element:<MyCart/>
-        }
+        },
+        {
+          path:"allusers",
+          element:<AllUsers/>
+        },
       ]
     }
   ]);
