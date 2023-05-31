@@ -7,6 +7,7 @@ const Dashboard = () => {
     const [cart] = useCart();
     // const isAdmin = true;
     const [isAdmin] = useAdmin();
+
     return (
         <div className="drawer drawer-mobile space-x-5 ">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -23,7 +24,7 @@ const Dashboard = () => {
                             <>
 
                                 <li><NavLink to="/dashboard/"><FaHome />Admin Home</NavLink></li>
-                                <li><NavLink to="/additems"> <ImSpoonKnife/> Add Items</NavLink></li>
+                                <li><NavLink to="/dashboard/additem"> <ImSpoonKnife/> Add Items</NavLink></li>
                                 <li><NavLink to="/manageitems"><FaBars/> Manage Items</NavLink></li>
                                 <li><NavLink to="/dashboard/managebookings"><FaBook />
                                    Manage Bookings
