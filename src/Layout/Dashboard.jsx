@@ -25,7 +25,7 @@ const Dashboard = () => {
 
                                 <li><NavLink to="/dashboard/"><FaHome />Admin Home</NavLink></li>
                                 <li><NavLink to="/dashboard/additem"> <ImSpoonKnife/> Add Items</NavLink></li>
-                                <li><NavLink to="/manageitems"><FaBars/> Manage Items</NavLink></li>
+                                <li><NavLink to="/dashboard/manageitems"><FaBars/> Manage Items</NavLink></li>
                                 <li><NavLink to="/dashboard/managebookings"><FaBook />
                                    Manage Bookings
                                 </NavLink></li>

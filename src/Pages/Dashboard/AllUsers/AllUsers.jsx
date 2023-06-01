@@ -29,7 +29,7 @@ const AllUsers = () => {
     }
 
     const handelDelete = id => {
-
+        console.log('To do in next',id);
     }
     return (
         <div className="min-h-screen">
