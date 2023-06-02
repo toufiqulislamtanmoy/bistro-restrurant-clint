@@ -10,7 +10,6 @@ const Payment = () => {
     const [cart] = useCart();
     const total = cart.reduce((sum, item) => item.price + sum, 0)
     const totalPrice = parseFloat(total.toFixed(2))
-    console.log(total);
     return (
         <div className="w-full">
             <Helmet>
@@ -19,7 +18,7 @@ const Payment = () => {
             <SectionTitle title="Payment Here" subtitle="Please Complete the process" />
             <h2>Payment Here</h2>
             <Elements  stripe={stripePromise}>
-                <CheckOutForm price={totalPrice}></CheckOutForm>
+                <CheckOutForm  cart={cart} price={totalPrice}></CheckOutForm>
             </Elements>
         </div>
     );

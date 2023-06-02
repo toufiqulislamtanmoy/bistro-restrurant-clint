@@ -5,7 +5,6 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from 'sweetalert2';
 
 const image_hosting_token = import.meta.env.VITE_IMAGE_TOKEN;
-console.log(image_hosting_token);
 const AddItem = () => {
     const { register, handleSubmit,reset } = useForm();
     const [axiosSecure] = useAxiosSecure();
