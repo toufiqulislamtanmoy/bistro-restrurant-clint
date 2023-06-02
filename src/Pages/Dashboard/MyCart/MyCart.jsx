@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet-async";
 import useCart from "../../../hooks/useCart";
 import { FaTrashAlt } from 'react-icons/fa';
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 const MyCart = () => {
     const [cart,refetch] = useCart();
     const total = cart.reduce((sum, item) => item.price + sum, 0)
@@ -41,7 +42,7 @@ const MyCart = () => {
             <div className="flex justify-between gap-5 my-5 uppercase font-semibold">
                 <div className="text-3xl">Total Items: {cart.length}</div>
                 <div className="text-3xl">Total Price: {total}</div>
-                <button className="btn btn-sm btn-warning">Pay Now</button>
+               <Link to="/dashboard/payment"> <button className="btn btn-sm btn-warning">Pay Now</button></Link>
             </div>
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">
